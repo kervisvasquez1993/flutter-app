@@ -3,10 +3,56 @@ import 'package:flutter/material.dart';
 class AuthBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Color c = const Color.fromRGBO(144, 144, 144, 0.5);
     return Container(
-      color: Colors.red,
+      color: c,
       width: double.infinity,
       height: double.infinity,
+      child: Stack(
+        children: [
+          _PurpleBox(),
+        ],
+      ),
+    );
+  }
+}
+
+class _PurpleBox extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+        width: double.infinity,
+        height: size.height * 0.4,
+        decoration: _builBoxDecoration(),
+        child: Stack(
+          children: [
+            Positioned(child: _Bugble(), top: 10, left: 90),
+            Positioned(child: _Bugble(), top: 90, left: -10),
+            Positioned(child: _Bugble(), bottom: -50, right: -20),
+            Positioned(child: _Bugble(), bottom: 120, right: 10),
+          ],
+        ));
+  }
+
+  BoxDecoration _builBoxDecoration() => BoxDecoration(
+        gradient: LinearGradient(colors: [
+          Color.fromRGBO(66, 165, 245, 1),
+          Color.fromRGBO(66, 165, 245, 1),
+        ]),
+      );
+}
+
+class _Bugble extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(200),
+        color: Color.fromRGBO(255, 255, 255, 0.05),
+      ),
     );
   }
 }
