@@ -1,3 +1,4 @@
+import 'package:app_delivery_redvital/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreens extends StatelessWidget {
@@ -6,9 +7,7 @@ class LoginScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("Login Screen"),
-      ),
+      body: AuthBackground(),
     );
   }
 }
