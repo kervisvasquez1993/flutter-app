@@ -1,6 +1,7 @@
 import 'package:app_delivery_redvital/providers/login_form_provider.dart';
 import 'package:app_delivery_redvital/screens/ui/input_decorations.dart';
 import 'package:app_delivery_redvital/screens/widgets/widget.dart';
+import 'package:app_delivery_redvital/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -82,9 +83,9 @@ class _LoginForm extends StatelessWidget {
                 ),
                 onChanged: (value) => loginForm.password = value,
                 validator: (value) {
-                  if (value != null && value.length >= 6) return null;
+                  if (value != null && value.length >= 2) return null;
 
-                  return 'La contraseña debe ser mayor a 6 caracteres';
+                  return 'La contraseña debe ser mayor a 2 caracteres';
                 },
               ),
               SizedBox(height: 30),
@@ -99,12 +100,16 @@ class _LoginForm extends StatelessWidget {
                     ? null
                     : () async {
                         FocusScope.of(context).unfocus();
+                        final authService =
+                            Provider.of<AuthService>(context, listen: false);
                         if (!loginForm.isValidForm()) return null;
                         loginForm.isLoading = true;
-                        await Future.delayed(Duration(seconds: 2));
+
                         //todo: validar si el login es correcto
+                        final String token = await authService.loginUser(
+                            loginForm.email, loginForm.password);
                         loginForm.isLoading = false;
-                        Navigator.pushReplacementNamed(context, 'home');
+                        // Navigator.pushReplacementNamed(context, 'home');
                       },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
