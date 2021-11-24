@@ -9,24 +9,27 @@ class LoginScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AuthBackground(
-          child: SingleChildScrollView(
-              child: Column(
-        children: [
-          SizedBox(
-            height: 200,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 200,
+              ),
+              CartContainer(
+                child: Column(
+                  children: [
+                    SizedBox(height: 10),
+                    Text("Ingresar",
+                        style: Theme.of(context).textTheme.headline4),
+                    SizedBox(height: 10),
+                    _LoginForm()
+                  ],
+                ),
+              ),
+            ],
           ),
-          CartContainer(
-            child: Column(
-              children: [
-                SizedBox(height: 10),
-                Text("Ingresar", style: Theme.of(context).textTheme.headline4),
-                SizedBox(height: 10),
-                _LoginForm()
-              ],
-            ),
-          )
-        ],
-      ))),
+        ),
+      ),
     );
   }
 }
@@ -61,6 +64,22 @@ class _LoginForm extends StatelessWidget {
             ),
           ),
           SizedBox(height: 30),
+          MaterialButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+            disabledColor: Colors.grey,
+            elevation: 0,
+            color: Colors.blue,
+            onPressed: () {},
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
+              child: Text(
+                'ingresar',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          )
         ])),
       ),
     );

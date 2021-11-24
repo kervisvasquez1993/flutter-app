@@ -29,13 +29,18 @@ class HeaderIcons extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
+        padding: EdgeInsets.symmetric(
+          vertical: 70.0,
+          horizontal: 100.0,
+        ),
         width: double.infinity,
         margin: EdgeInsets.only(top: 20),
-        child: Icon(
-          Icons.person_pin,
-          color: Colors.white,
-          size: 100,
-        ),
+        // child: Icon(
+        //   Icons.person_pin,
+        //   color: Colors.white,
+        //   size: 100,
+        // ),
+        child: Image.asset('assets/logo.png'),
       ),
     );
   }
