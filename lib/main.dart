@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
         initialRoute: 'login',
         routes: {
           'login': (_) => LoginScreens(),
+          'home': (_) => HomeScreens(),
         });
   }
 }
