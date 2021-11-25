@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Material App',
-          initialRoute: 'login',
+          initialRoute: 'checking',
           routes: {
             'login': (_) => LoginScreens(),
             'home': (_) => HomeScreens(),
+            'checking': (_) => CheckAuthScreen()
           }),
     );
   }

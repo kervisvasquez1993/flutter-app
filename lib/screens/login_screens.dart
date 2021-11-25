@@ -22,9 +22,6 @@ class LoginScreens extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 10),
-                    Text("Ingresar",
-                        style: Theme.of(context).textTheme.headline4),
-                    SizedBox(height: 10),
                     ChangeNotifierProvider(
                       create: (_) => LoginFormProvider(),
                       child: _LoginForm(),
@@ -106,10 +103,15 @@ class _LoginForm extends StatelessWidget {
                         loginForm.isLoading = true;
 
                         //todo: validar si el login es correcto
-                        final String token = await authService.loginUser(
-                            loginForm.email, loginForm.password);
-                        loginForm.isLoading = false;
-                        // Navigator.pushReplacementNamed(context, 'home');
+                        final String? errorMessages = await authService
+                            .loginUser(loginForm.email, loginForm.password);
+
+                        if (errorMessages == null) {
+                          Navigator.pushReplacementNamed(context, 'home');
+                        } else {
+                          print(errorMessages);
+                          loginForm.isLoading = false;
+                        }
                       },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
