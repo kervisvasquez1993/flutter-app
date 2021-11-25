@@ -15,14 +15,16 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Material App',
-          initialRoute: 'checking',
-          routes: {
-            'login': (_) => LoginScreens(),
-            'home': (_) => HomeScreens(),
-            'checking': (_) => CheckAuthScreen()
-          }),
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        initialRoute: 'checking',
+        routes: {
+          'login': (_) => LoginScreens(),
+          'home': (_) => HomeScreens(),
+          'checking': (_) => CheckAuthScreen()
+        },
+        scaffoldMessengerKey: NotificationService.messageKey,
+      ),
     );
   }
 }
