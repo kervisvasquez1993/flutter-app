@@ -1,3 +1,5 @@
+import 'package:app_delivery_redvital/page/order/order_page.dart';
+import 'package:app_delivery_redvital/providers/providers.dart';
 import 'package:app_delivery_redvital/screens/screens.dart';
 import 'package:app_delivery_redvital/services/services.dart';
 import 'package:flutter/material.dart';
@@ -13,18 +15,33 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => AuthService(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => OrderProvider(),
+        ),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Material App',
-        initialRoute: 'checking',
-        routes: {
-          'login': (_) => LoginScreens(),
-          'home': (_) => HomeScreens(),
-          'checking': (_) => CheckAuthScreen()
-        },
-        scaffoldMessengerKey: NotificationService.messageKey,
-      ),
+      child: myApp(),
+    );
+  }
+}
+
+class myApp extends StatelessWidget {
+  const myApp({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Material App',
+      initialRoute: 'ordenes',
+      routes: {
+        'login': (_) => LoginScreens(),
+        'home': (_) => HomeScreens(),
+        'checking': (_) => CheckAuthScreen(),
+        'ordenes': (_) => OrderPage()
+      },
+      scaffoldMessengerKey: NotificationService.messageKey,
     );
   }
 }
