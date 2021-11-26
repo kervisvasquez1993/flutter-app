@@ -1,6 +1,8 @@
+import 'package:app_delivery_redvital/page/screens/ui/input_decorations.dart';
+import 'package:app_delivery_redvital/page/screens/widgets/auth_background.dart';
+import 'package:app_delivery_redvital/page/screens/widgets/card_container.dart';
 import 'package:app_delivery_redvital/providers/login_form_provider.dart';
-import 'package:app_delivery_redvital/screens/ui/input_decorations.dart';
-import 'package:app_delivery_redvital/screens/widgets/widget.dart';
+
 import 'package:app_delivery_redvital/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

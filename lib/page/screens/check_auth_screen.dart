@@ -1,4 +1,4 @@
-import 'package:app_delivery_redvital/screens/screens.dart';
+import 'package:app_delivery_redvital/page/screens/screens.dart';
 import 'package:app_delivery_redvital/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
