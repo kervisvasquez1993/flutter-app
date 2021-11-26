@@ -1,3 +1,5 @@
+import 'package:app_delivery_redvital/screens/widgets/tarjeta_card.dart';
+import 'package:app_delivery_redvital/screens/widgets/widget.dart';
 import 'package:app_delivery_redvital/services/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,10 +20,12 @@ class HomeScreens extends StatelessWidget {
                 print("cerrar");
               },
               icon: Icon(Icons.logout_outlined))),
-      body: Container(
-        child: Center(
-          child: Text("data"),
-        ),
+      body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) => TargetaCard()),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }
