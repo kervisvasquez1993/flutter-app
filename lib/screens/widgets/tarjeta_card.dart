@@ -11,7 +11,6 @@ class TargetaCard extends StatelessWidget {
         margin: EdgeInsets.only(top: 25, bottom: 50),
         width: double.infinity,
         height: 400,
-        // color: Colors.red,
         decoration: _BoxDecoration(),
         child: Stack(
           children: [

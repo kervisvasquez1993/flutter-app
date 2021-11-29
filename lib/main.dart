@@ -21,7 +21,8 @@ class MyApp extends StatelessWidget {
         routes: {
           'login': (_) => LoginScreens(),
           'home': (_) => HomeScreens(),
-          'checking': (_) => CheckAuthScreen()
+          'checking': (_) => CheckAuthScreen(),
+          'show': (_) => ShowPage(),
         },
         scaffoldMessengerKey: NotificationService.messageKey,
         theme: ThemeData.light().copyWith(

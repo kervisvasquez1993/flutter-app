@@ -16,13 +16,19 @@ class HomeScreens extends StatelessWidget {
           leading: IconButton(
               onPressed: () {
                 authService.logout();
-                Navigator.pushReplacementNamed(context, 'login');
+                Navigator.pushNamed(context, 'login');
                 print("cerrar");
               },
               icon: Icon(Icons.logout_outlined))),
       body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (BuildContext context, int index) => TargetaCard()),
+        itemCount: 10,
+        itemBuilder: (BuildContext context, int index) => GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, 'show');
+          },
+          child: TargetaCard(),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {},
