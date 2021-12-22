@@ -10,9 +10,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => AuthService(),
-        ),
+        ChangeNotifierProvider(create: (_) => AuthService()),
+        ChangeNotifierProvider(create: (_) => OrderService()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
