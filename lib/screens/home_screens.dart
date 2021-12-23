@@ -12,14 +12,26 @@ class HomeScreens extends StatelessWidget {
     final authService = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-          title: Text('inicio'),
-          leading: IconButton(
-              onPressed: () {
-                authService.logout();
-                Navigator.pushNamed(context, 'login');
-                print("cerrar");
-              },
-              icon: Icon(Icons.logout_outlined))),
+        title: Text('inicio'),
+        leading: IconButton(
+          onPressed: () {
+            authService.logout();
+            Navigator.pushNamed(context, 'login');
+            print("cerrar");
+          },
+          icon: Icon(Icons.logout_outlined),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.pushNamed(context, 'setting_screen');
+            },
+            icon: Icon(
+              Icons.settings,
+            ),
+          )
+        ],
+      ),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (BuildContext context, int index) => GestureDetector(
