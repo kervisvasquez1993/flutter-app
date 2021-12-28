@@ -18,10 +18,11 @@ class AuthService with ChangeNotifier {
     final url = Uri.https(_url_base, '/auth/signin');
 
     final respuesta = await http.post(url, body: authData);
+
     final Map<String, dynamic> decodeResp = json.decode(respuesta.body);
+
     if (decodeResp.containsKey('accessToken')) {
       await storage.write(key: 'token', value: decodeResp['accessToken']);
-      // return decodeResp['accessToken'];
       return null;
     } else {
       final code = decodeResp['statusCode'];

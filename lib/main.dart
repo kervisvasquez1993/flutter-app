@@ -1,9 +1,15 @@
 import 'package:app_delivery_redvital/screens/screens.dart';
 import 'package:app_delivery_redvital/services/services.dart';
+import 'package:app_delivery_redvital/share_preferences/preferencias.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Preferences.init();
+  return runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

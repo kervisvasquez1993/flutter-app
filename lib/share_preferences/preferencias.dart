@@ -7,4 +7,13 @@ class Preferences {
   static Future init() async {
     _prefs = await SharedPreferences.getInstance();
   }
+
+  static String get token {
+    return _prefs.getString('token') ?? _token;
+  }
+
+  static set token(String token) {
+    _token = token;
+    _prefs.setString('token', token);
+  }
 }
