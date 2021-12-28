@@ -42,4 +42,11 @@ class AuthService with ChangeNotifier {
   Future<String> readToken() async {
     return await storage.read(key: 'token') ?? '';
   }
+
+  // final response = await http.post(
+  //   'your base url/rest/register/register',
+  //   headers: { HttpHeaders.authorizationHeader: token,
+  //     HttpHeaders.contentTypeHeader: "application/json"},
+  // );
+
 }

@@ -10,11 +10,13 @@ class HomeScreens extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context, listen: false);
+    final ordenes = Provider.of<OrderService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text('inicio'),
         leading: IconButton(
           onPressed: () {
+            print(authService.readToken());
             authService.logout();
             Navigator.pushNamed(context, 'login');
             print("cerrar");
@@ -43,7 +45,9 @@ class HomeScreens extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          print(ordenes.ordenes(authService.readToken()));
+        },
       ),
     );
   }

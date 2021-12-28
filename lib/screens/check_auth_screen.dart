@@ -35,7 +35,9 @@ class CheckAuthScreen extends StatelessWidget {
               });
             }
 
-            return Container();
+            return Container(
+              child: Text("espere"),
+            );
           },
         )),
       ),
