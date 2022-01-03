@@ -101,7 +101,7 @@ class _LoginForm extends StatelessWidget {
                         FocusScope.of(context).unfocus();
                         if (!loginForm.isValidForm()) return null;
                         loginForm.isLoading = true;
-                        await Future.delayed(Duration(seconds: 2));
+                        await Future.delayed(Duration(milliseconds: 100));
                         //todo: validar si el login es correcto
                         loginForm.isLoading = false;
                         Navigator.pushReplacementNamed(context, 'home');

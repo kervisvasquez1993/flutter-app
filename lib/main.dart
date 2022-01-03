@@ -1,3 +1,4 @@
+import 'package:app_delivery_redvital/page/login/login_page.dart';
 import 'package:app_delivery_redvital/screens/screens.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         initialRoute: 'login',
         routes: {
-          'login': (_) => LoginScreens(),
+          'login': (_) => LoginPage(),
           'home': (_) => HomeScreens(),
         });
   }

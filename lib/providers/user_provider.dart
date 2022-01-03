@@ -1,6 +1,10 @@
 import 'package:app_delivery_redvital/api/env.dart';
 import 'package:app_delivery_redvital/models/response_api.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:path/path.dart';
+import 'dart:io';
 
 class UsersProvider {
   String _url = Environment.API_DELIVERY;
@@ -11,9 +15,9 @@ class UsersProvider {
     this.context = context;
   }
 
-  Future<ResponseApi> login(String email, String password) async {
+  Future<ResponseApi?> login(String email, String password) async {
     try {
-      Uri url = Uri.http(_url, '$_api/login');
+      Uri url = Uri.http(_url, '/login');
       String bodyParams = json.encode({'email': email, 'password': password});
       Map<String, String> headers = {'Content-type': 'application/json'};
       final res = await http.post(url, headers: headers, body: bodyParams);
