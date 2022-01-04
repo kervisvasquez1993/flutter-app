@@ -3,10 +3,26 @@ import 'package:app_delivery_redvital/providers/login_form_provider.dart';
 import 'package:app_delivery_redvital/screens/ui/input_decorations.dart';
 import 'package:app_delivery_redvital/screens/widgets/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   LoginController _controller = new LoginController();
+
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    SchedulerBinding.instance!.addPostFrameCallback((timeStamp) {
+      _controller.init(context);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +42,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(height: 10),
                     ChangeNotifierProvider(
                       create: (_) => LoginFormProvider(),
-                      child: _LoginForm(),
+                      child: _LoginForm(_controller),
                     ),
                   ],
                 ),
@@ -40,7 +56,8 @@ class LoginPage extends StatelessWidget {
 }
 
 class _LoginForm extends StatelessWidget {
-  const _LoginForm({Key? key}) : super(key: key);
+  LoginController _con;
+  _LoginForm(this._con);
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +70,7 @@ class _LoginForm extends StatelessWidget {
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(children: [
               TextFormField(
+                controller: _con.emailController,
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecorations.authInputDecoration(
@@ -72,6 +90,7 @@ class _LoginForm extends StatelessWidget {
               ),
               SizedBox(height: 30),
               TextFormField(
+                controller: _con.passwordController,
                 autocorrect: false,
                 keyboardType: TextInputType.emailAddress,
                 obscureText: true,
@@ -82,7 +101,7 @@ class _LoginForm extends StatelessWidget {
                 ),
                 onChanged: (value) => loginForm.password = value,
                 validator: (value) {
-                  if (value != null && value.length >= 6) return null;
+                  if (value != null && value.length >= 3) return null;
 
                   return 'La contraseña debe ser mayor a 6 caracteres';
                 },
@@ -95,17 +114,17 @@ class _LoginForm extends StatelessWidget {
                 disabledColor: Colors.grey,
                 elevation: 0,
                 color: Colors.blue,
-                onPressed: loginForm.isLoading
-                    ? null
-                    : () async {
-                        FocusScope.of(context).unfocus();
-                        if (!loginForm.isValidForm()) return null;
-                        loginForm.isLoading = true;
-                        await Future.delayed(Duration(milliseconds: 100));
-                        //todo: validar si el login es correcto
-                        loginForm.isLoading = false;
-                        Navigator.pushReplacementNamed(context, 'home');
-                      },
+                onPressed: _con.login,
+                // ? null
+                // : () async {
+                //     FocusScope.of(context).unfocus();
+                //     if (!loginForm.isValidForm()) return null;
+                //     loginForm.isLoading = true;
+                //     await Future.delayed(Duration(milliseconds: 100));
+                //     //todo: validar si el login es correcto
+                //     loginForm.isLoading = false;
+                //     Navigator.pushReplacementNamed(context, 'home');
+                //   },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
                   child: Text(
