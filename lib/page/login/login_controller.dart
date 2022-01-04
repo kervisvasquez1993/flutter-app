@@ -1,10 +1,11 @@
 import 'package:app_delivery_redvital/models/response_api.dart';
-import 'package:app_delivery_redvital/models/user_model.dart';
+
 import 'package:app_delivery_redvital/providers/user_provider.dart';
+import 'package:app_delivery_redvital/utils/my_snackbar.dart';
 import 'package:flutter/material.dart';
 
 class LoginController {
-  BuildContext? context;
+  late BuildContext context;
   TextEditingController emailController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
 
@@ -35,15 +36,11 @@ class LoginController {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
     ResponseApi? responseApi = await usersProvider.login(email, password);
-    print("hola");
     if (responseApi!.accessToken != null) {
-      print(responseApi.accessToken);
-      return true;
+      print('respuesta : ${responseApi.toJson()}');
+      MySnackbar.show(context, responseApi.accessToken);
     } else {
-      print(
-        responseApi.statusCode,
-      );
-      return false;
+      MySnackbar.error(context, responseApi.message);
     }
   }
 }

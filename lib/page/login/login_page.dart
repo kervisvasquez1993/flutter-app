@@ -115,16 +115,6 @@ class _LoginForm extends StatelessWidget {
                 elevation: 0,
                 color: Colors.blue,
                 onPressed: _con.login,
-                // ? null
-                // : () async {
-                //     FocusScope.of(context).unfocus();
-                //     if (!loginForm.isValidForm()) return null;
-                //     loginForm.isLoading = true;
-                //     await Future.delayed(Duration(milliseconds: 100));
-                //     //todo: validar si el login es correcto
-                //     loginForm.isLoading = false;
-                //     Navigator.pushReplacementNamed(context, 'home');
-                //   },
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 70, vertical: 15),
                   child: Text(
