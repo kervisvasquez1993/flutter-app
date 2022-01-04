@@ -31,17 +31,19 @@ class LoginController {
     // }
   }
 
-  void login() async {
+  login() async {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
     ResponseApi? responseApi = await usersProvider.login(email, password);
-
+    print("hola");
     if (responseApi!.accessToken != null) {
       print(responseApi.accessToken);
+      return true;
     } else {
       print(
         responseApi.statusCode,
       );
+      return false;
     }
   }
 }
