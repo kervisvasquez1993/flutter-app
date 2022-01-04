@@ -6,9 +6,9 @@ ResponseApi responseApiFromJson(String str) =>
 String responseApiToJson(ResponseApi data) => json.encode(data.toJson());
 
 class ResponseApi {
-  String? statusCode;
+  int? statusCode;
   String? error;
-  bool? message;
+  String? message;
   String? accessToken;
 
   ResponseApi({

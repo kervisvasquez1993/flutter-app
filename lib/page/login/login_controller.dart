@@ -36,7 +36,12 @@ class LoginController {
     String password = passwordController.text.trim();
     ResponseApi? responseApi = await usersProvider.login(email, password);
 
-    print("email : $email");
-    print("password : $password");
+    if (responseApi!.accessToken != null) {
+      print(responseApi.accessToken);
+    } else {
+      print(
+        responseApi.statusCode,
+      );
+    }
   }
 }
