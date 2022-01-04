@@ -2,6 +2,7 @@ import 'package:app_delivery_redvital/models/response_api.dart';
 
 import 'package:app_delivery_redvital/providers/user_provider.dart';
 import 'package:app_delivery_redvital/utils/my_snackbar.dart';
+import 'package:app_delivery_redvital/utils/share_pref.dart';
 import 'package:flutter/material.dart';
 
 class LoginController {
@@ -10,6 +11,7 @@ class LoginController {
   TextEditingController passwordController = new TextEditingController();
 
   UsersProvider usersProvider = new UsersProvider();
+  SharePref _sharePrefe = new SharePref();
   // PushNotificationsProvider pushNotificationsProvider =
   //     new PushNotificationsProvider();
   // SharedPref _sharedPref = new SharedPref();
@@ -37,8 +39,10 @@ class LoginController {
     String password = passwordController.text.trim();
     ResponseApi? responseApi = await usersProvider.login(email, password);
     if (responseApi!.accessToken != null) {
-      print('respuesta : ${responseApi.toJson()}');
-      MySnackbar.show(context, responseApi.accessToken);
+      // print('respuesta : ${responseApi.toJson()}');
+      _sharePrefe.save('token', responseApi.accessToken);
+
+      print(_sharePrefe.read('token'));
     } else {
       MySnackbar.error(context, responseApi.message);
     }
